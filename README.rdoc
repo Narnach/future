@@ -22,6 +22,9 @@ Here it only takes 5 seconds to calculate the sum instead of the 9 it would take
 
 == Recent changes
 
+=== Version 0.1.1
+* Added specs
+
 === Version 0.1.0
 * Created project
 * Added first version of future.rb, wrapped in a Module
