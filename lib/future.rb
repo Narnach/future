@@ -4,30 +4,27 @@
 # calls.
 #
 # An example:
-#   include Future
-#   f = future { sleep 5; 123}
+#   f = Future.new { sleep 5; 123}
 #   puts f * 5 #=> 615
-# The future will take 5 seconds to run, then 123 is returned.
+# Theis future will take 5 seconds to run, then 123 is returned.
 # The call f.*(5) will block until the future is done.
 #
 # Another example:
-#   include Future
-#   f1 = future { sleep 5; 10}
-#   f2 = future { sleep 3; 20}
-#   f3 = future { sleep 1; 30}
+#   f1 = Future.new { sleep 5; 10}
+#   f2 = Future.new { sleep 3; 20}
+#   f3 = Future.new { sleep 1; 30}
 #   puts f3 + f2 + f1
 # Here it only takes 5 seconds to calculate the sum instead of the 9 it would take when done sequentially.
-module Future
-  def future(&block)
-    t = Thread.new(&block)
-    class << t
-      (instance_methods - %w[value __send__ __id__]).each do |meth|
-        eval("undef #{meth}")
-      end
-      def method_missing(*args, &block)
-        value.send(*args,&block)
-      end
-    end
-    t
+class Future
+  (instance_methods - %w[__send__ __id__ object_id]).each do |meth|
+    eval("undef #{meth}")
+  end
+
+  def initialize(&block)
+    @thread = Thread.new(&block)
+  end
+
+  def method_missing(*args, &block)
+    @thread.value.send(*args,&block)
   end
 end
