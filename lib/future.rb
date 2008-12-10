@@ -17,7 +17,7 @@
 # Here it only takes 5 seconds to calculate the sum instead of the 9 it would take when done sequentially.
 class Future
   (instance_methods - %w[__send__ __id__ object_id]).each do |meth|
-    eval("undef #{meth}")
+    undef_method meth
   end
 
   def initialize(&block)
