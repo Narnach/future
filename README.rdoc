@@ -20,6 +20,10 @@ Here it only takes 5 seconds to calculate the sum instead of the 9 it would take
 
 == Recent changes
 
+=== Version 0.2.0
+* Replaced Future Module with Future class. The old syntax is no longer supported.
+* Replaced one-time use of eval with undef_method.
+
 === Version 0.1.1
 * Added specs
 

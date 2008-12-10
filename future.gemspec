@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.name         = 'future'
   s.summary      = "A naieve implementation of futures"
   s.description  = "A naieve implementation of futures"
-  s.version      = '0.1.1'
-  s.date         = '2008-12-08'
+  s.version      = '0.2.0'
+  s.date         = '2008-12-10'
   s.platform     = Gem::Platform::RUBY
   s.authors      = ["Wes Oldenbeuving"]
   s.email        = "narnach@gmail.com"
