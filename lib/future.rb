@@ -15,13 +15,20 @@
 #   f3 = Future.new { sleep 1; 30}
 #   puts f3 + f2 + f1
 # Here it only takes 5 seconds to calculate the sum instead of the 9 it would take when done sequentially.
+#
+# Futures have their own thread and thus don't have access to scope they were created from.
+# If you do require values from outside the future, pass them to the Future when creating it:
+#
+#   one = 1
+#   two = 2
+#   sum = Future.new(one, two) {|a,b| a + b} # => 3
 class Future
   (instance_methods - %w[__send__ __id__ object_id]).each do |meth|
     undef_method meth
   end
 
-  def initialize(&block)
-    @thread = Thread.new(&block)
+  def initialize(*args, &block)
+    @thread = Thread.new(*args, &block)
   end
 
   def method_missing(*args, &block)
