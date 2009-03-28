@@ -5,15 +5,15 @@
 #
 # An example:
 #   f = Future.new { sleep 5; 123}
-#   puts f * 5 #=> 615
+#   f * 5 # => 615
 # This future will take 5 seconds to run, then 123 is returned.
-# The call f.*(5) will block until the future is done.
+# The call to f.* will block until the future has a return value.
 #
 # Another example:
 #   f1 = Future.new { sleep 5; 10}
 #   f2 = Future.new { sleep 3; 20}
 #   f3 = Future.new { sleep 1; 30}
-#   puts f3 + f2 + f1
+#   f3 + f2 + f1 # => 60
 # Here it only takes 5 seconds to calculate the sum instead of the 9 it would take when done sequentially.
 #
 # Futures have their own thread and thus don't have access to scope they were created from.
