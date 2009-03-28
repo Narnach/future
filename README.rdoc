@@ -20,6 +20,11 @@ Here it only takes 5 seconds to calculate the sum instead of the 9 it would take
 
 == Recent changes
 
+=== Version 0.2.1
+* Cleared up the docs a little
+* Futures can take arguments and pass them to their Thread
+* Docfix: fixed typo
+
 === Version 0.2.0
 * Replaced Future Module with Future class. The old syntax is no longer supported.
 * Replaced one-time use of eval with undef_method.
