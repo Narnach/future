@@ -8,7 +8,7 @@ calls.
 An example:
   f = Future.new { sleep 5; 123}
   puts f * 5 #=> 615
-Theis future will take 5 seconds to run, then 123 is returned.
+This future will take 5 seconds to run, then 123 is returned.
 The call f.*(5) will block until the future is done.
 
 Another example:
